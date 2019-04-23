@@ -5,11 +5,15 @@
 #define _CONFIG 2
 #define _FUNCTION 3
 
+// Caps Lock when tapped, arrows when held
+#define FN_CAPS LT(_ARROWS, KC_CAPS)
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_ANSI] = LAYOUT_60_ansi_splitspace_splitrshift(
 		KC_GESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_NO, KC_BSPC,
 		KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,
-		KC_CAPS, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT,
+		FN_CAPS, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT,
 		KC_LSFT, KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, TG(_ARROWS),
 		KC_LCTL, KC_LALT, KC_LGUI, KC_SPC, MO(_CONFIG), KC_SPC, MO(_FUNCTION), KC_RGUI, KC_NO, KC_RALT, KC_RCTL
 	),
@@ -63,3 +67,5 @@ uint32_t layer_state_set_user(uint32_t state) {
 	}
 	return state;
 };
+// turn off keyboard LEDs when Mac is asleep.
+#define RGBLIGHT_SLEEP
